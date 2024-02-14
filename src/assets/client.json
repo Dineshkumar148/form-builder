@@ -1,0 +1,30 @@
+[
+    {
+      "id": 1,
+      "name": "Dinesh",
+      "email": "dinesh@ohoh.in",
+      "phone": "6369052594",
+      "websites": "front end"
+    },
+    {
+      "id": 2,
+      "name": "Ranjith",
+      "email": "ranjith@ohoh.in",
+      "phone": "9489714264",
+      "websites": "hildegard.org"
+    },
+    {
+      "id": 3,
+      "name": "Hari",
+      "email": "hari@ohoh.in",
+      "phone": "1-770-736-8031 x56442",
+      "websites": "hildegard.org"
+    },
+    {
+      "id": 4,
+      "name": "Pugal",
+      "email": "pugal@ohoh.in",
+      "phone": "1-770-736-8031 x56442",
+      "websites": "hildegard.org"
+    }
+]

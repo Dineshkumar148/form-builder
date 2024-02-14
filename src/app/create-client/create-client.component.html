@@ -1,37 +1,70 @@
 <div class="container-fluid py-5">
     <h1>Create Client</h1>
-    <form class="col-12 col-md-6 col-lg-3" [formGroup]="clientformgroup" (ngSubmit)="saveuser()">
-        <div class="mb-3">
-          <label class="form-label">Name</label>
-          <input type="email" class="form-control" placeholder="Enter Name" formControlName="name">
+    <form class="col-12 col-md-6 col-lg-3" [formGroup]="clientformgroup" (ngSubmit)="createclient()">
+        <div class="pb-3">
+            <label class="form-label">Name</label>
+            <input type="email" class="form-control" placeholder="Enter Name" formControlName="name">
         </div>
-        <div class="mb-3">
+        <div class="pb-3" *ngIf="(this.clientformgroup.controls['name'].touched)">
+            <span class="text-danger" *ngIf="(this.clientformgroup.controls['name'].errors?.['required'])">please fill
+                this field</span>
+        </div>
+        <div class="pb-3">
             <label class="form-label">Email</label>
             <input type="email" class="form-control" placeholder="Enter Email" formControlName="email">
-          </div>
-          <div class="mb-3">
+        </div>
+        <div class="pb-3" *ngIf="(this.clientformgroup.controls['email'].touched)">
+            <span class="text-danger" *ngIf="(this.clientformgroup.controls['email'].errors?.['required'])">please fill
+                this field</span>
+            <span class="text-danger" *ngIf="(this.clientformgroup.controls['email'].errors?.['email'])">Enter valid
+                email</span>
+        </div>
+        <div class="pb-3">
             <label class="form-label">Phone</label>
-            <input type="email" class="form-control" placeholder="Enter Phone Number" formControlName="phone">
-          </div>
-          <div class="mb-3">
+            <input type="email" class="form-control" placeholder="Enter Phone Number" formControlName="phone"
+                maxlength="10">
+        </div>
+        <div class="pb-3" *ngIf="(this.clientformgroup.controls['phone'].touched)">
+            <span class="text-danger" *ngIf="(this.clientformgroup.controls['phone'].errors?.['required'])"> please fill
+                this field</span>
+            <span class="text-danger" *ngIf="(this.clientformgroup.controls['phone'].errors?.['minlength'])"> Enter
+                valid
+                10 numbers</span>
+            <span class="text-danger" *ngIf="(this.clientformgroup.controls['phone'].errors?.['pattern'])"> Enter
+                numbers only</span>
+        </div>
+        <div class="pb-3">
             <label class="form-label">Website</label>
             <input type="email" class="form-control" placeholder="Enter website Link" formControlName="website">
-          </div>
-        <button class="btn btn-primary">Submit</button>
-      </form>
+        </div>
+        <div class="pb-3" *ngIf="(this.clientformgroup.controls['website'].touched)">
+            <span class="text-danger" *ngIf="(this.clientformgroup.controls['website'].errors?.['required'])">please
+                fill
+                this field</span>
+        </div>
+        <button class="btn btn-primary" [disabled]="clientformgroup.invalid">Submit</button>
+    </form>
 
 
-      <div class="col-12 py-5">
+    <div class="col-12 py-5">
         <h1>Client List</h1>
+        <nav class="col-12 col-md-6 col-lg-3">
+            <div class="pb-3">
+                <input type="search" class="form-control" placeholder="search by Name" (input)="searchName($event)" />
+            </div>
+            <div class="pb-3">
+                <input type="search" class="form-control" placeholder="search by Phone Number" (input)="searchPhone($event)" />
+            </div>
+        </nav>
         <table class="table table-bordered">
             <thead>
-            <tr>
-                <th>s.no</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>website</th>
-            </tr>
+                <tr>
+                    <th>s.no</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>website</th>
+                </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let user of usersArray">
@@ -39,13 +72,13 @@
                     <td>{{user.name}}</td>
                     <td>{{user.email}}</td>
                     <td>{{user.phone}}</td>
-                    <td>{{user.website}}</td>
-                    <!-- <td>
-                        <button class="btn btn-primary" (click)="editclient(user.id)">Edit</button>
-                    </td> -->
+                    <td>{{user.websites}}</td>
+                    <td>
+                        <button class="btn btn-primary">Edit</button>
+                    </td>
                 </tr>
             </tbody>
 
         </table>
-      </div>
+    </div>
 </div>
